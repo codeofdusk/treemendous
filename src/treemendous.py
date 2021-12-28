@@ -174,13 +174,7 @@ class VisualViewDialog(wx.Dialog):
         event.Skip()
 
     def OnSize(self, event):
-        (dialogWidth, dialogHeight) = self.GetSize()
-        if self.platform not in ("Windows", "Darwin"):
-            # magic numbers are needed to make sure the image doesn't go outside the bounds of the dialog window
-            dialogWidthAdjust = -50
-            dialogHeightAdjust = -90
-            dialogWidth += dialogWidthAdjust
-            dialogHeight += dialogHeightAdjust
+        (dialogWidth, dialogHeight) = self.GetClientSize()
         dialogProportion = dialogWidth / dialogHeight
         if dialogProportion > self.imgProportion:
             newHeight = dialogHeight
